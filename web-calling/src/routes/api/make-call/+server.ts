@@ -18,15 +18,14 @@ const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || '';
 // 	throw new Error('Missing required Twilio environment variables.');
 // }
 
-console.log("SID: ",TWILIO_ACCOUNT_SID);
-console.log("API_KEY: ",TWILIO_API_KEY);
-console.log("API_SECRET: ",TWILIO_API_SECRET);
-console.log("Phone: ", TWILIO_PHONE_NUMBER);
-console.log("APP_SID: ", TWILIO_APP_SID);
-
+console.log('SID: ', TWILIO_ACCOUNT_SID);
+console.log('API_KEY: ', TWILIO_API_KEY);
+console.log('API_SECRET: ', TWILIO_API_SECRET);
+console.log('Phone: ', TWILIO_PHONE_NUMBER);
+console.log('APP_SID: ', TWILIO_APP_SID);
 
 const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, {
-  accountSid: TWILIO_ACCOUNT_SID, // You can also pass this if you need it in opts
+	accountSid: TWILIO_ACCOUNT_SID // You can also pass this if you need it in opts
 });
 
 export const POST: RequestHandler = async ({ request }) => {
