@@ -1,0 +1,10 @@
+
+> web@0.0.1 dev /home/ajdj/clones/skio-interview/web
+> vite dev
+
+Re-optimizing dependencies because lockfile has changed
+
+  VITE v5.4.11  ready in 1598 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose

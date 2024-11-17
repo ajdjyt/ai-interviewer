@@ -1,0 +1,13 @@
+Received track: audio, ID: c92b99d0-44c3-4395-9aed-785db18950e4
+Audio track received!
+INFO:     127.0.0.1:38098 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38114 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38116 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38126 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38132 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38132 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38126 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38116 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38114 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38098 - "POST /api/webrtc/ice-candidate HTTP/1.1" 200 OK
+ICE connection state: checking
