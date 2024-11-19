@@ -1,8 +1,261 @@
-INFO:     Started server process [182341]
+INFO:     Started server process [959498]
 INFO:     Waiting for application startup.
+2024-11-19 20:09:46,966 - peerConnection - INFO - Shutting down, cleaning up peer connections...
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [182341]
+2024-11-19 20:09:57,276 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): Created for 127.0.0.1
+2024-11-19 20:09:57,278 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): TrackID: 0d012781-e1b7-46bf-8b95-7ddf035b39ab audio Track received
+2024-11-19 20:09:57,279 - peerConnection - INFO - Created answer: v=0
+o=- 3941015997 3941015997 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=group:BUNDLE 0
+a=msid-semantic:WMS *
+m=audio 9 UDP/TLS/RTP/SAVPF 111 0 8
+c=IN IP4 0.0.0.0
+a=sendrecv
+a=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level
+a=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid
+a=mid:0
+a=msid:0cb2b4eb-0382-49c8-a0ce-2114eb41e21f 73b6eabf-0eb7-4627-ac62-a16966eed76a
+a=rtcp:9 IN IP4 0.0.0.0
+a=rtcp-mux
+a=ssrc:145426390 cname:75edb490-027b-411c-9573-c8f312ca2646
+a=rtpmap:111 opus/48000/2
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=ice-ufrag:0awe
+a=ice-pwd:9j7AZ3hi2WHwmB0aojRtM2
+a=fingerprint:sha-256 12:7A:34:77:EC:B3:69:65:6A:67:D2:A0:B9:C7:B0:87:AE:82:4D:8D:C0:FC:4F:58:DC:28:34:6F:D6:50:0A:56
+a=setup:active
+
+2024-11-19 20:09:57,281 - peerConnection - INFO - Adding ICE candidate
+2024-11-19 20:09:57,282 - peerConnection - INFO - Adding ICE candidate
+2024-11-19 20:09:57,283 - peerConnection - INFO - Adding ICE candidate
+2024-11-19 20:09:57,283 - peerConnection - INFO - Adding ICE candidate
+2024-11-19 20:09:57,398 - peerConnection - INFO - Adding ICE candidate
+2024-11-19 20:09:57,400 - peerConnection - INFO - Adding ICE candidate
+2024-11-19 20:09:57,400 - peerConnection - INFO - Adding ICE candidate
+2024-11-19 20:09:57,401 - peerConnection - INFO - Adding ICE candidate
+2024-11-19 20:10:02,288 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): ICE connection state: checking
+2024-11-19 20:10:02,288 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): Connection state: connecting
+2024-11-19 20:10:02,310 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): ICE connection state: completed
+2024-11-19 20:10:02,312 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): Connection state: connected
+2024-11-19 20:10:02,540 - peerConnection - DEBUG - Processing audio frame: 0, 48000 Hz
+2024-11-19 20:10:02,547 - peerConnection - DEBUG - Processing audio frame: 960, 48000 Hz
+2024-11-19 20:10:02,549 - peerConnection - DEBUG - Processing audio frame: 1920, 48000 Hz
+2024-11-19 20:10:02,551 - peerConnection - DEBUG - Processing audio frame: 2880, 48000 Hz
+2024-11-19 20:10:02,553 - peerConnection - DEBUG - Processing audio frame: 3840, 48000 Hz
+2024-11-19 20:10:02,554 - peerConnection - DEBUG - Processing audio frame: 4800, 48000 Hz
+2024-11-19 20:10:02,557 - peerConnection - DEBUG - Processing audio frame: 5760, 48000 Hz
+2024-11-19 20:10:02,559 - peerConnection - DEBUG - Processing audio frame: 6720, 48000 Hz
+2024-11-19 20:10:02,573 - peerConnection - DEBUG - Processing audio frame: 7680, 48000 Hz
+2024-11-19 20:10:02,590 - peerConnection - DEBUG - Processing audio frame: 8640, 48000 Hz
+2024-11-19 20:10:02,612 - peerConnection - DEBUG - Processing audio frame: 9600, 48000 Hz
+2024-11-19 20:10:02,634 - peerConnection - DEBUG - Processing audio frame: 10560, 48000 Hz
+2024-11-19 20:10:02,653 - peerConnection - DEBUG - Processing audio frame: 11520, 48000 Hz
+2024-11-19 20:10:02,669 - peerConnection - DEBUG - Processing audio frame: 12480, 48000 Hz
+2024-11-19 20:10:02,690 - peerConnection - DEBUG - Processing audio frame: 13440, 48000 Hz
+2024-11-19 20:10:02,712 - peerConnection - DEBUG - Processing audio frame: 14400, 48000 Hz
+2024-11-19 20:10:02,733 - peerConnection - DEBUG - Processing audio frame: 15360, 48000 Hz
+2024-11-19 20:10:02,749 - peerConnection - DEBUG - Processing audio frame: 16320, 48000 Hz
+2024-11-19 20:10:02,770 - peerConnection - DEBUG - Processing audio frame: 17280, 48000 Hz
+2024-11-19 20:10:02,792 - peerConnection - DEBUG - Processing audio frame: 18240, 48000 Hz
+2024-11-19 20:10:02,813 - peerConnection - DEBUG - Processing audio frame: 19200, 48000 Hz
+2024-11-19 20:10:02,829 - peerConnection - DEBUG - Processing audio frame: 20160, 48000 Hz
+2024-11-19 20:10:02,850 - peerConnection - DEBUG - Processing audio frame: 21120, 48000 Hz
+2024-11-19 20:10:02,872 - peerConnection - DEBUG - Processing audio frame: 22080, 48000 Hz
+2024-11-19 20:10:02,893 - peerConnection - DEBUG - Processing audio frame: 23040, 48000 Hz
+2024-11-19 20:10:02,909 - peerConnection - DEBUG - Processing audio frame: 24000, 48000 Hz
+2024-11-19 20:10:02,931 - peerConnection - DEBUG - Processing audio frame: 24960, 48000 Hz
+2024-11-19 20:10:02,952 - peerConnection - DEBUG - Processing audio frame: 25920, 48000 Hz
+2024-11-19 20:10:02,973 - peerConnection - DEBUG - Processing audio frame: 26880, 48000 Hz
+2024-11-19 20:10:02,989 - peerConnection - DEBUG - Processing audio frame: 27840, 48000 Hz
+2024-11-19 20:10:03,010 - peerConnection - DEBUG - Processing audio frame: 28800, 48000 Hz
+2024-11-19 20:10:03,032 - peerConnection - DEBUG - Processing audio frame: 29760, 48000 Hz
+2024-11-19 20:10:03,053 - peerConnection - DEBUG - Processing audio frame: 30720, 48000 Hz
+2024-11-19 20:10:03,069 - peerConnection - DEBUG - Processing audio frame: 31680, 48000 Hz
+2024-11-19 20:10:03,090 - peerConnection - DEBUG - Processing audio frame: 32640, 48000 Hz
+2024-11-19 20:10:03,112 - peerConnection - DEBUG - Processing audio frame: 33600, 48000 Hz
+2024-11-19 20:10:03,133 - peerConnection - DEBUG - Processing audio frame: 34560, 48000 Hz
+2024-11-19 20:10:03,149 - peerConnection - DEBUG - Processing audio frame: 35520, 48000 Hz
+2024-11-19 20:10:03,171 - peerConnection - DEBUG - Processing audio frame: 36480, 48000 Hz
+2024-11-19 20:10:03,192 - peerConnection - DEBUG - Processing audio frame: 37440, 48000 Hz
+2024-11-19 20:10:03,213 - peerConnection - DEBUG - Processing audio frame: 38400, 48000 Hz
+2024-11-19 20:10:03,229 - peerConnection - DEBUG - Processing audio frame: 39360, 48000 Hz
+2024-11-19 20:10:03,251 - peerConnection - DEBUG - Processing audio frame: 40320, 48000 Hz
+2024-11-19 20:10:03,274 - peerConnection - DEBUG - Processing audio frame: 41280, 48000 Hz
+2024-11-19 20:10:03,295 - peerConnection - DEBUG - Processing audio frame: 42240, 48000 Hz
+2024-11-19 20:10:03,311 - peerConnection - DEBUG - Processing audio frame: 43200, 48000 Hz
+2024-11-19 20:10:03,333 - peerConnection - DEBUG - Processing audio frame: 44160, 48000 Hz
+2024-11-19 20:10:03,354 - peerConnection - DEBUG - Processing audio frame: 45120, 48000 Hz
+2024-11-19 20:10:03,376 - peerConnection - DEBUG - Processing audio frame: 46080, 48000 Hz
+2024-11-19 20:10:03,391 - peerConnection - DEBUG - Processing audio frame: 47040, 48000 Hz
+2024-11-19 20:10:03,412 - peerConnection - DEBUG - Processing audio frame: 48000, 48000 Hz
+2024-11-19 20:10:03,434 - peerConnection - DEBUG - Processing audio frame: 48960, 48000 Hz
+2024-11-19 20:10:03,456 - peerConnection - DEBUG - Processing audio frame: 49920, 48000 Hz
+2024-11-19 20:10:03,471 - peerConnection - DEBUG - Processing audio frame: 50880, 48000 Hz
+2024-11-19 20:10:03,493 - peerConnection - DEBUG - Processing audio frame: 51840, 48000 Hz
+2024-11-19 20:10:03,514 - peerConnection - DEBUG - Processing audio frame: 52800, 48000 Hz
+2024-11-19 20:10:03,536 - peerConnection - DEBUG - Processing audio frame: 53760, 48000 Hz
+2024-11-19 20:10:03,551 - peerConnection - DEBUG - Processing audio frame: 54720, 48000 Hz
+2024-11-19 20:10:03,573 - peerConnection - DEBUG - Processing audio frame: 55680, 48000 Hz
+2024-11-19 20:10:03,594 - peerConnection - DEBUG - Processing audio frame: 56640, 48000 Hz
+2024-11-19 20:10:03,616 - peerConnection - DEBUG - Processing audio frame: 57600, 48000 Hz
+2024-11-19 20:10:03,632 - peerConnection - DEBUG - Processing audio frame: 58560, 48000 Hz
+2024-11-19 20:10:03,653 - peerConnection - DEBUG - Processing audio frame: 59520, 48000 Hz
+2024-11-19 20:10:03,672 - peerConnection - DEBUG - Processing audio frame: 60480, 48000 Hz
+2024-11-19 20:10:03,694 - peerConnection - DEBUG - Processing audio frame: 61440, 48000 Hz
+2024-11-19 20:10:03,709 - peerConnection - DEBUG - Processing audio frame: 62400, 48000 Hz
+2024-11-19 20:10:03,730 - peerConnection - DEBUG - Processing audio frame: 63360, 48000 Hz
+2024-11-19 20:10:03,752 - peerConnection - DEBUG - Processing audio frame: 64320, 48000 Hz
+2024-11-19 20:10:03,773 - peerConnection - DEBUG - Processing audio frame: 65280, 48000 Hz
+2024-11-19 20:10:03,791 - peerConnection - DEBUG - Processing audio frame: 66240, 48000 Hz
+2024-11-19 20:10:03,813 - peerConnection - DEBUG - Processing audio frame: 67200, 48000 Hz
+2024-11-19 20:10:03,835 - peerConnection - DEBUG - Processing audio frame: 68160, 48000 Hz
+2024-11-19 20:10:03,855 - peerConnection - DEBUG - Processing audio frame: 69120, 48000 Hz
+2024-11-19 20:10:03,871 - peerConnection - DEBUG - Processing audio frame: 70080, 48000 Hz
+2024-11-19 20:10:03,890 - peerConnection - DEBUG - Processing audio frame: 71040, 48000 Hz
+2024-11-19 20:10:03,912 - peerConnection - DEBUG - Processing audio frame: 72000, 48000 Hz
+2024-11-19 20:10:03,933 - peerConnection - DEBUG - Processing audio frame: 72960, 48000 Hz
+2024-11-19 20:10:03,949 - peerConnection - DEBUG - Processing audio frame: 73920, 48000 Hz
+2024-11-19 20:10:03,970 - peerConnection - DEBUG - Processing audio frame: 74880, 48000 Hz
+2024-11-19 20:10:03,991 - peerConnection - DEBUG - Processing audio frame: 75840, 48000 Hz
+2024-11-19 20:10:04,013 - peerConnection - DEBUG - Processing audio frame: 76800, 48000 Hz
+2024-11-19 20:10:04,029 - peerConnection - DEBUG - Processing audio frame: 77760, 48000 Hz
+2024-11-19 20:10:04,050 - peerConnection - DEBUG - Processing audio frame: 78720, 48000 Hz
+2024-11-19 20:10:04,072 - peerConnection - DEBUG - Processing audio frame: 79680, 48000 Hz
+2024-11-19 20:10:04,093 - peerConnection - DEBUG - Processing audio frame: 80640, 48000 Hz
+2024-11-19 20:10:04,109 - peerConnection - DEBUG - Processing audio frame: 81600, 48000 Hz
+2024-11-19 20:10:04,130 - peerConnection - DEBUG - Processing audio frame: 82560, 48000 Hz
+2024-11-19 20:10:04,152 - peerConnection - DEBUG - Processing audio frame: 83520, 48000 Hz
+2024-11-19 20:10:04,173 - peerConnection - DEBUG - Processing audio frame: 84480, 48000 Hz
+2024-11-19 20:10:04,189 - peerConnection - DEBUG - Processing audio frame: 85440, 48000 Hz
+2024-11-19 20:10:04,210 - peerConnection - DEBUG - Processing audio frame: 86400, 48000 Hz
+2024-11-19 20:10:04,232 - peerConnection - DEBUG - Processing audio frame: 87360, 48000 Hz
+2024-11-19 20:10:04,253 - peerConnection - DEBUG - Processing audio frame: 88320, 48000 Hz
+2024-11-19 20:10:04,269 - peerConnection - DEBUG - Processing audio frame: 89280, 48000 Hz
+2024-11-19 20:10:04,290 - peerConnection - DEBUG - Processing audio frame: 90240, 48000 Hz
+2024-11-19 20:10:04,312 - peerConnection - DEBUG - Processing audio frame: 91200, 48000 Hz
+2024-11-19 20:10:04,333 - peerConnection - DEBUG - Processing audio frame: 92160, 48000 Hz
+2024-11-19 20:10:04,349 - peerConnection - DEBUG - Processing audio frame: 93120, 48000 Hz
+2024-11-19 20:10:04,370 - peerConnection - DEBUG - Processing audio frame: 94080, 48000 Hz
+2024-11-19 20:10:04,392 - peerConnection - DEBUG - Processing audio frame: 95040, 48000 Hz
+2024-11-19 20:10:04,413 - peerConnection - DEBUG - Processing audio frame: 96000, 48000 Hz
+2024-11-19 20:10:04,429 - peerConnection - DEBUG - Processing audio frame: 96960, 48000 Hz
+2024-11-19 20:10:04,450 - peerConnection - DEBUG - Processing audio frame: 97920, 48000 Hz
+2024-11-19 20:10:04,472 - peerConnection - DEBUG - Processing audio frame: 98880, 48000 Hz
+2024-11-19 20:10:04,493 - peerConnection - DEBUG - Processing audio frame: 99840, 48000 Hz
+2024-11-19 20:10:04,509 - peerConnection - DEBUG - Processing audio frame: 100800, 48000 Hz
+2024-11-19 20:10:04,531 - peerConnection - DEBUG - Processing audio frame: 101760, 48000 Hz
+2024-11-19 20:10:04,552 - peerConnection - DEBUG - Processing audio frame: 102720, 48000 Hz
+2024-11-19 20:10:04,573 - peerConnection - DEBUG - Processing audio frame: 103680, 48000 Hz
+2024-11-19 20:10:04,589 - peerConnection - DEBUG - Processing audio frame: 104640, 48000 Hz
+2024-11-19 20:10:04,611 - peerConnection - DEBUG - Processing audio frame: 105600, 48000 Hz
+2024-11-19 20:10:04,632 - peerConnection - DEBUG - Processing audio frame: 106560, 48000 Hz
+2024-11-19 20:10:04,653 - peerConnection - DEBUG - Processing audio frame: 107520, 48000 Hz
+2024-11-19 20:10:04,669 - peerConnection - DEBUG - Processing audio frame: 108480, 48000 Hz
+2024-11-19 20:10:04,690 - peerConnection - DEBUG - Processing audio frame: 109440, 48000 Hz
+2024-11-19 20:10:04,712 - peerConnection - DEBUG - Processing audio frame: 110400, 48000 Hz
+2024-11-19 20:10:04,733 - peerConnection - DEBUG - Processing audio frame: 111360, 48000 Hz
+2024-11-19 20:10:04,749 - peerConnection - DEBUG - Processing audio frame: 112320, 48000 Hz
+2024-11-19 20:10:04,770 - peerConnection - DEBUG - Processing audio frame: 113280, 48000 Hz
+2024-11-19 20:10:04,792 - peerConnection - DEBUG - Processing audio frame: 114240, 48000 Hz
+2024-11-19 20:10:04,813 - peerConnection - DEBUG - Processing audio frame: 115200, 48000 Hz
+2024-11-19 20:10:04,829 - peerConnection - DEBUG - Processing audio frame: 116160, 48000 Hz
+2024-11-19 20:10:04,850 - peerConnection - DEBUG - Processing audio frame: 117120, 48000 Hz
+2024-11-19 20:10:04,872 - peerConnection - DEBUG - Processing audio frame: 118080, 48000 Hz
+2024-11-19 20:10:04,893 - peerConnection - DEBUG - Processing audio frame: 119040, 48000 Hz
+2024-11-19 20:10:04,909 - peerConnection - DEBUG - Processing audio frame: 120000, 48000 Hz
+2024-11-19 20:10:04,930 - peerConnection - DEBUG - Processing audio frame: 120960, 48000 Hz
+2024-11-19 20:10:04,952 - peerConnection - DEBUG - Processing audio frame: 121920, 48000 Hz
+2024-11-19 20:10:04,973 - peerConnection - DEBUG - Processing audio frame: 122880, 48000 Hz
+2024-11-19 20:10:04,989 - peerConnection - DEBUG - Processing audio frame: 123840, 48000 Hz
+2024-11-19 20:10:05,010 - peerConnection - DEBUG - Processing audio frame: 124800, 48000 Hz
+2024-11-19 20:10:05,032 - peerConnection - DEBUG - Processing audio frame: 125760, 48000 Hz
+2024-11-19 20:10:05,053 - peerConnection - DEBUG - Processing audio frame: 126720, 48000 Hz
+2024-11-19 20:10:05,069 - peerConnection - DEBUG - Processing audio frame: 127680, 48000 Hz
+2024-11-19 20:10:05,090 - peerConnection - DEBUG - Processing audio frame: 128640, 48000 Hz
+2024-11-19 20:10:05,112 - peerConnection - DEBUG - Processing audio frame: 129600, 48000 Hz
+2024-11-19 20:10:05,133 - peerConnection - DEBUG - Processing audio frame: 130560, 48000 Hz
+2024-11-19 20:10:05,149 - peerConnection - DEBUG - Processing audio frame: 131520, 48000 Hz
+2024-11-19 20:10:05,170 - peerConnection - DEBUG - Processing audio frame: 132480, 48000 Hz
+2024-11-19 20:10:05,192 - peerConnection - DEBUG - Processing audio frame: 133440, 48000 Hz
+2024-11-19 20:10:05,213 - peerConnection - DEBUG - Processing audio frame: 134400, 48000 Hz
+2024-11-19 20:10:05,229 - peerConnection - DEBUG - Processing audio frame: 135360, 48000 Hz
+2024-11-19 20:10:05,250 - peerConnection - DEBUG - Processing audio frame: 136320, 48000 Hz
+2024-11-19 20:10:05,272 - peerConnection - DEBUG - Processing audio frame: 137280, 48000 Hz
+2024-11-19 20:10:05,293 - peerConnection - DEBUG - Processing audio frame: 138240, 48000 Hz
+2024-11-19 20:10:05,309 - peerConnection - DEBUG - Processing audio frame: 139200, 48000 Hz
+2024-11-19 20:10:05,331 - peerConnection - DEBUG - Processing audio frame: 140160, 48000 Hz
+2024-11-19 20:10:05,352 - peerConnection - DEBUG - Processing audio frame: 141120, 48000 Hz
+2024-11-19 20:10:05,373 - peerConnection - DEBUG - Processing audio frame: 142080, 48000 Hz
+2024-11-19 20:10:05,389 - peerConnection - DEBUG - Processing audio frame: 143040, 48000 Hz
+2024-11-19 20:10:05,411 - peerConnection - DEBUG - Processing audio frame: 144000, 48000 Hz
+2024-11-19 20:10:05,432 - peerConnection - DEBUG - Processing audio frame: 144960, 48000 Hz
+2024-11-19 20:10:05,453 - peerConnection - DEBUG - Processing audio frame: 145920, 48000 Hz
+2024-11-19 20:10:05,469 - peerConnection - DEBUG - Processing audio frame: 146880, 48000 Hz
+2024-11-19 20:10:05,491 - peerConnection - DEBUG - Processing audio frame: 147840, 48000 Hz
+2024-11-19 20:10:05,512 - peerConnection - DEBUG - Processing audio frame: 148800, 48000 Hz
+2024-11-19 20:10:05,533 - peerConnection - DEBUG - Processing audio frame: 149760, 48000 Hz
+2024-11-19 20:10:05,549 - peerConnection - DEBUG - Processing audio frame: 150720, 48000 Hz
+2024-11-19 20:10:05,570 - peerConnection - DEBUG - Processing audio frame: 151680, 48000 Hz
+2024-11-19 20:10:05,592 - peerConnection - DEBUG - Processing audio frame: 152640, 48000 Hz
+2024-11-19 20:10:05,613 - peerConnection - DEBUG - Processing audio frame: 153600, 48000 Hz
+2024-11-19 20:10:05,630 - peerConnection - DEBUG - Processing audio frame: 154560, 48000 Hz
+2024-11-19 20:10:05,651 - peerConnection - DEBUG - Processing audio frame: 155520, 48000 Hz
+2024-11-19 20:10:05,672 - peerConnection - DEBUG - Processing audio frame: 156480, 48000 Hz
+2024-11-19 20:10:05,693 - peerConnection - DEBUG - Processing audio frame: 157440, 48000 Hz
+2024-11-19 20:10:05,709 - peerConnection - DEBUG - Processing audio frame: 158400, 48000 Hz
+2024-11-19 20:10:05,731 - peerConnection - DEBUG - Processing audio frame: 159360, 48000 Hz
+2024-11-19 20:10:05,752 - peerConnection - DEBUG - Processing audio frame: 160320, 48000 Hz
+2024-11-19 20:10:05,773 - peerConnection - DEBUG - Processing audio frame: 161280, 48000 Hz
+2024-11-19 20:10:05,789 - peerConnection - DEBUG - Processing audio frame: 162240, 48000 Hz
+2024-11-19 20:10:05,811 - peerConnection - DEBUG - Processing audio frame: 163200, 48000 Hz
+2024-11-19 20:10:05,832 - peerConnection - DEBUG - Processing audio frame: 164160, 48000 Hz
+2024-11-19 20:10:05,853 - peerConnection - DEBUG - Processing audio frame: 165120, 48000 Hz
+2024-11-19 20:10:05,869 - peerConnection - DEBUG - Processing audio frame: 166080, 48000 Hz
+2024-11-19 20:10:05,890 - peerConnection - DEBUG - Processing audio frame: 167040, 48000 Hz
+2024-11-19 20:10:05,912 - peerConnection - DEBUG - Processing audio frame: 168000, 48000 Hz
+2024-11-19 20:10:05,933 - peerConnection - DEBUG - Processing audio frame: 168960, 48000 Hz
+2024-11-19 20:10:05,949 - peerConnection - DEBUG - Processing audio frame: 169920, 48000 Hz
+2024-11-19 20:10:05,970 - peerConnection - DEBUG - Processing audio frame: 170880, 48000 Hz
+2024-11-19 20:10:05,992 - peerConnection - DEBUG - Processing audio frame: 171840, 48000 Hz
+2024-11-19 20:10:06,013 - peerConnection - DEBUG - Processing audio frame: 172800, 48000 Hz
+2024-11-19 20:10:06,029 - peerConnection - DEBUG - Processing audio frame: 173760, 48000 Hz
+2024-11-19 20:10:06,050 - peerConnection - DEBUG - Processing audio frame: 174720, 48000 Hz
+2024-11-19 20:10:06,071 - peerConnection - DEBUG - Processing audio frame: 175680, 48000 Hz
+2024-11-19 20:10:06,093 - peerConnection - DEBUG - Processing audio frame: 176640, 48000 Hz
+2024-11-19 20:10:06,109 - peerConnection - DEBUG - Processing audio frame: 177600, 48000 Hz
+2024-11-19 20:10:06,130 - peerConnection - DEBUG - Processing audio frame: 178560, 48000 Hz
+2024-11-19 20:10:06,152 - peerConnection - DEBUG - Processing audio frame: 179520, 48000 Hz
+2024-11-19 20:10:06,173 - peerConnection - DEBUG - Processing audio frame: 180480, 48000 Hz
+2024-11-19 20:10:06,189 - peerConnection - DEBUG - Processing audio frame: 181440, 48000 Hz
+2024-11-19 20:10:06,211 - peerConnection - DEBUG - Processing audio frame: 182400, 48000 Hz
+2024-11-19 20:10:06,231 - peerConnection - DEBUG - Processing audio frame: 183360, 48000 Hz
+2024-11-19 20:10:06,253 - peerConnection - DEBUG - Processing audio frame: 184320, 48000 Hz
+2024-11-19 20:10:06,269 - peerConnection - DEBUG - Processing audio frame: 185280, 48000 Hz
+2024-11-19 20:10:06,290 - peerConnection - DEBUG - Processing audio frame: 186240, 48000 Hz
+2024-11-19 20:10:06,312 - peerConnection - DEBUG - Processing audio frame: 187200, 48000 Hz
+2024-11-19 20:10:06,333 - peerConnection - DEBUG - Processing audio frame: 188160, 48000 Hz
+2024-11-19 20:10:06,349 - peerConnection - DEBUG - Processing audio frame: 189120, 48000 Hz
+2024-11-19 20:10:06,370 - peerConnection - DEBUG - Processing audio frame: 190080, 48000 Hz
+2024-11-19 20:10:06,391 - peerConnection - DEBUG - Processing audio frame: 191040, 48000 Hz
+2024-11-19 20:10:06,413 - peerConnection - DEBUG - Processing audio frame: 192000, 48000 Hz
+2024-11-19 20:10:06,429 - peerConnection - DEBUG - Processing audio frame: 192960, 48000 Hz
+2024-11-19 20:10:06,450 - peerConnection - DEBUG - Processing audio frame: 193920, 48000 Hz
+2024-11-19 20:10:06,472 - peerConnection - DEBUG - Processing audio frame: 194880, 48000 Hz
+2024-11-19 20:10:06,493 - peerConnection - DEBUG - Processing audio frame: 195840, 48000 Hz
+2024-11-19 20:10:06,509 - peerConnection - DEBUG - Processing audio frame: 196800, 48000 Hz
+2024-11-19 20:10:06,530 - peerConnection - DEBUG - Processing audio frame: 197760, 48000 Hz
+2024-11-19 20:10:06,552 - peerConnection - DEBUG - Processing audio frame: 198720, 48000 Hz
+2024-11-19 20:10:06,573 - peerConnection - DEBUG - Processing audio frame: 199680, 48000 Hz
+2024-11-19 20:10:06,589 - peerConnection - DEBUG - Processing audio frame: 200640, 48000 Hz
+2024-11-19 20:10:06,610 - peerConnection - DEBUG - Processing audio frame: 201600, 48000 Hz
+2024-11-19 20:10:06,631 - peerConnection - DEBUG - Processing audio frame: 202560, 48000 Hz
+2024-11-19 20:10:06,653 - peerConnection - DEBUG - Processing audio frame: 203520, 48000 Hz
+2024-11-19 20:10:06,669 - peerConnection - DEBUG - Processing audio frame: 204480, 48000 Hz
+2024-11-19 20:10:06,690 - peerConnection - DEBUG - Processing audio frame: 205440, 48000 Hz
+2024-11-19 20:10:06,706 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): TrackID: 0d012781-e1b7-46bf-8b95-7ddf035b39ab audio Track ended
+2024-11-19 20:10:06,707 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): ICE connection state: closed
+2024-11-19 20:10:06,707 - peerConnection - INFO - PeerConnection(24a226dc-302f-4ed6-a952-a97a637dc131): Connection state: closed

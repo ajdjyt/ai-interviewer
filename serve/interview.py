@@ -15,8 +15,9 @@ import threading
 import wave
 import dotenv
 
+dotenv.load_dotenv()
+
 def init_vars():
-    dotenv.load_dotenv()
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     groq = Groq(api_key=GROQ_API_KEY)
     vad = load_silero_vad()

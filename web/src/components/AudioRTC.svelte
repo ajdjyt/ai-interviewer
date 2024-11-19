@@ -1,8 +1,9 @@
 <script lang="ts">
 	let localStream: MediaStream;
 	let peerConnection: RTCPeerConnection;
-
+	let peerConnectionId: string;
 	let connected = false;
+	let errorMessage: string | undefined = '';
 
 	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -11,27 +12,33 @@
 		peerConnection = new RTCPeerConnection();
 
 		peerConnection.onicecandidate = (event) => {
-			if (event.candidate) {
-				fetch(BACKEND_URL + '/api/webrtc/ice-candidate', {
+			if (event.candidate && peerConnectionId != '') {
+				fetch(BACKEND_URL + '/webrtc/ice-candidate', {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({ candidate: event.candidate })
+					body: JSON.stringify({
+						candidate: event.candidate,
+						sdpMid: event.candidate.sdpMid,
+						sdmpMLineIndex: event.candidate.sdpMLineIndex,
+						peerConnectionId: peerConnectionId
+					})
 				});
 			}
 		};
 	}
 
-	async function toggleAudioStream(){
-		if (connected){
+	async function toggleAudioStream() {
+		if (connected) {
 			// Stop the audio stream and close the connection
-			localStream.getTracks().forEach(track => {
+			localStream.getTracks().forEach((track) => {
 				track.stop();
 			});
 			peerConnection.close();
 			connected = false;
-			console.log("Audio stream stopped.");
+			errorMessage = ''; 
+			console.log('Audio stream stopped.');
 		} else {
-			startAudioStream();
+			await startAudioStream();
 		}
 	}
 	// Function to start capturing audio and create an offer
@@ -53,17 +60,38 @@
 			await peerConnection.setLocalDescription(offer);
 
 			// Send the offer to the backend (using FastAPI)
-			const response = await fetch(BACKEND_URL + '/api/webrtc/offer', {
+			const response = await fetch(BACKEND_URL + '/webrtc/offer', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ sdp: offer.sdp })
+				body: JSON.stringify({
+					sdp: offer.sdp,
+					type: offer.type
+				})
 			});
 
-			const { answer } = await response.json();
+			const data = await response.json();
+			if (data.status == 'failure') {
+				errorMessage = 'Failed to create a valid WebRTC connection. Please try again.';
+				console.error('Failed to get a valid response for offer.');
+				connected = false;
+				return;
+			}
+
+			console.log('Got a successfull response');
+			const answer = data.answer;
+			peerConnectionId = data.peerConnectionId;
+
+			console.log('peerConnectionID:', peerConnectionId);
+			console.log('answer:', answer);
+			console.log('SDP Offer: ', offer.sdp);
 			await peerConnection.setRemoteDescription(
-				new RTCSessionDescription({ type: 'answer', sdp: answer })
+				new RTCSessionDescription({
+					type: 'answer',
+					sdp: answer
+				})
 			);
 			connected = true;
+			errorMessage = '';
 		} catch (error) {
 			console.error('Error accessing microphone or creating offer:', error);
 		}
@@ -89,4 +117,7 @@
 	>
 		wowza
 	</h1>
+	{#if errorMessage}
+		<p class="text-red-500 mt-4">{errorMessage}</p>
+	{/if}
 </div>
