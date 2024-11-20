@@ -1,14 +1,20 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	let localStream: MediaStream;
 	let peerConnection: RTCPeerConnection;
 	let peerConnectionId: string;
 	let connected = false;
 	let errorMessage: string | undefined = '';
+	let dataChannel: RTCDataChannel;
+	let outputElement: HTMLHeadingElement;
 
 	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+	onMount(() => {
+		outputElement = document.getElementById('output') as HTMLHeadingElement;
+	});
 
-	// Only run this code in the browser
-	if (typeof window !== 'undefined') {
+	async function setupWebRTC() {
 		peerConnection = new RTCPeerConnection();
 
 		peerConnection.onicecandidate = (event) => {
@@ -19,47 +25,48 @@
 					body: JSON.stringify({
 						candidate: event.candidate,
 						sdpMid: event.candidate.sdpMid,
-						sdmpMLineIndex: event.candidate.sdpMLineIndex,
+						sdpMLineIndex: event.candidate.sdpMLineIndex,
 						peerConnectionId: peerConnectionId
 					})
 				});
 			}
 		};
-	}
+		dataChannel = peerConnection.createDataChannel('textChannel');
 
-	async function toggleAudioStream() {
-		if (connected) {
-			// Stop the audio stream and close the connection
-			localStream.getTracks().forEach((track) => {
-				track.stop();
-			});
-			peerConnection.close();
-			connected = false;
-			errorMessage = ''; 
-			console.log('Audio stream stopped.');
-		} else {
-			await startAudioStream();
-		}
-	}
-	// Function to start capturing audio and create an offer
-	async function startAudioStream() {
+		dataChannel.onopen = () => {
+			console.log('Data channel is open and ready to send messages');
+		};
+
+		dataChannel.onclose = () => {
+			console.log('Data channel is closed');
+		};
+
+		dataChannel.onmessage = (event) => {
+			// console.log('Received message from backend:');
+			if (outputElement) {
+				outputElement.textContent = event.data;
+			}
+		};
+		peerConnection.onconnectionstatechange = () => {
+			if (
+				peerConnection.connectionState === 'disconnected' ||
+				peerConnection.connectionState === 'failed'
+			) {
+				// Close both the audio and data channels
+				closeWebRTC();
+			}
+		};
+
 		try {
-			// Get the audio stream from the microphone
 			localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-			console.log(localStream);
 			if (localStream) {
 				localStream.getTracks().forEach((track) => {
 					console.log('Adding track to peer connection:', track.kind, track.id);
 					peerConnection.addTrack(track, localStream);
 				});
-				// localStream.getTracks().forEach((track) => peerConnection.addTrack(track, localStream));
 			}
-
-			// Create an SDP offer
 			const offer = await peerConnection.createOffer();
 			await peerConnection.setLocalDescription(offer);
-
-			// Send the offer to the backend (using FastAPI)
 			const response = await fetch(BACKEND_URL + '/webrtc/offer', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -82,8 +89,8 @@
 			peerConnectionId = data.peerConnectionId;
 
 			console.log('peerConnectionID:', peerConnectionId);
-			console.log('answer:', answer);
-			console.log('SDP Offer: ', offer.sdp);
+			// console.log('answer:', answer);
+			// console.log('SDP Offer: ', offer.sdp);
 			await peerConnection.setRemoteDescription(
 				new RTCSessionDescription({
 					type: 'answer',
@@ -93,7 +100,33 @@
 			connected = true;
 			errorMessage = '';
 		} catch (error) {
-			console.error('Error accessing microphone or creating offer:', error);
+			errorMessage = String(error);
+			console.error('Error setting up WebRTC:', error);
+		}
+	}
+	// // Only run this code in the browser
+
+	async function closeWebRTC() {
+		if (localStream) {
+			localStream.getTracks().forEach((track) => track.stop());
+		}
+		if (dataChannel) {
+			dataChannel.close();
+		}
+
+		if (peerConnection) {
+			peerConnection.close();
+		}
+		connected = false;
+		errorMessage = '';
+		peerConnectionId = '';
+		console.log('Audio and data channels stopped.');
+	}
+	async function toggle() {
+		if (connected) {
+			await closeWebRTC();
+		} else {
+			await setupWebRTC();
 		}
 	}
 </script>
@@ -102,7 +135,7 @@
 	class="min-w-screen mx-auto flex min-h-screen flex-col items-center justify-center bg-black text-slate-100"
 >
 	<button
-		on:click={toggleAudioStream}
+		on:click={toggle}
 		class="m-6 min-w-[10rem] rounded-[1rem] border border-indigo-700 px-[1.2em] py-[0.6em]"
 	>
 		{#if connected}
@@ -118,6 +151,6 @@
 		wowza
 	</h1>
 	{#if errorMessage}
-		<p class="text-red-500 mt-4">{errorMessage}</p>
+		<p class="mt-4 text-red-500">{errorMessage}</p>
 	{/if}
 </div>
