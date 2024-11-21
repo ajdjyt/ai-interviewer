@@ -16,7 +16,10 @@ from aiortc.contrib.media import MediaRelay
 from contextlib import asynccontextmanager
 import av
 import sys
-import random
+import numpy as np
+import time
+import tempfile
+from lib import groqWhisper, applyVAD
 
 # Configure logging
 logger = logging.getLogger("peerConnection")
@@ -34,6 +37,9 @@ logger.addHandler(stderr_handler)
 peerConnections = dict()
 relay = MediaRelay()
 dataChannel = None
+
+BUFFER_DURATION = 1.0
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -67,6 +73,7 @@ def sendToFrontend(text: str):
     else:
         logger.warning("Data channel is not open, text not sent")
 
+
 # Custom Audio Stream Track
 class Audio(MediaStreamTrack):
     """
@@ -75,32 +82,89 @@ class Audio(MediaStreamTrack):
 
     kind = "audio"
 
-    def __init__(self, source_track):
+    def __init__(self, sourceTrack: MediaStreamTrack):
         super().__init__()
-        self.source_track = source_track
+        self.sourceTrack = sourceTrack
+        self.sampleRate = None
+        self.bufferSize = int(48000 * BUFFER_DURATION)
+        self.buffer = []
+        self.last_frame_time = time.time()
+        self.threshhold = 0.5
 
     async def recv(self):
 
         # Receive the incoming audio frame
-        frame = await self.source_track.recv()
+        frame = await self.sourceTrack.recv()
 
-        text = self.process_audio_frame(frame)
+        if self.sampleRate == None:
+            self.sampleRate = frame.sample_rate
+            self.bufferSize = int(self.sampleRate * BUFFER_DURATION)
 
-        if text:
-            sendToFrontend(text)
+        self.buffer.append(frame)
+
+        total_samples = sum([frame.to_ndarray().shape[1] for frame in self.buffer])
+
+        if total_samples >= self.sampleRate * BUFFER_DURATION:
+            audio_data = self.processBuffer()
+            text = self.processAudioData(audio_data)
+
+            if text:
+                sendToFrontend(text)
+
+            self.buffer = []
 
         return frame
 
-    def process_audio_frame(self, frame):
+    def processBuffer(self) -> np.ndarray:
+        """
+        Process the buffered frames into a single chunk of audio.
+        """
+        frames_ndarray = np.concatenate(
+            [frame.to_ndarray() for frame in self.buffer]
+        ).flatten()
+        return frames_ndarray
+
+    def processAudioData(self, audioData: np.ndarray):
         """
         Process the audio frame.
         """
-        samples = frame.to_ndarray()
-        logger.debug(f"Processing audio frame: {frame.pts}, {frame.sample_rate} Hz")
 
-        transcribed_text = str(random.randint(1, 100))
+        timestamps = applyVAD(audioData=audioData, sampleRate=self.sampleRate)
 
-        return transcribed_text
+        if timestamps:
+            # logger.info("Speech detected in the chunk.")
+
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tempFile:
+                tempFilePath = tempFile.name
+                outputContainer = av.open(tempFilePath, "w")
+
+                stream = outputContainer.add_stream("pcm_s16le", rate=self.sampleRate)
+                stream.layout = "stereo"
+
+                # Write audio frames to the file
+                for frame in self.buffer:
+                    frame_data = frame.to_ndarray()
+                    # If mono, duplicate the data to make it stereo
+                    if frame_data.ndim == 1:
+                        frame_data = np.column_stack((frame_data, frame_data))
+                    packet = av.Packet(frame_data.tobytes())
+                    outputContainer.mux(packet)
+
+                outputContainer.close()
+
+            # logger.info(f"Saved audio data to temporary file: {tempFilePath}")
+
+            try:
+                logger.debug("Sending audio to whisper")
+                transcribed_text = groqWhisper(filename=tempFilePath)
+            except Exception as e:
+                logger.error(f"Error during transcription: {e}")
+                transcribed_text = None
+            finally:
+                os.remove(tempFilePath)
+            return transcribed_text
+        else:
+            return None
 
 
 # WebRTC signaling handler
@@ -148,7 +212,7 @@ async def offer(request: Request):
         logInfo(f"TrackID: {track.id} {track.kind} Track received")
 
         if track.kind == "audio":
-            processedAudio = Audio(source_track=relay.subscribe(track))
+            processedAudio = Audio(sourceTrack=relay.subscribe(track))
             peerConnection.addTrack(processedAudio)
 
         @track.on("ended")

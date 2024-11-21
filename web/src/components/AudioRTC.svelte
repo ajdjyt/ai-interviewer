@@ -44,7 +44,7 @@
 		dataChannel.onmessage = (event) => {
 			// console.log('Received message from backend:');
 			if (outputElement) {
-				outputElement.textContent = event.data;
+				outputElement.textContent = (event.data!='')?event.data:outputElement.textContent ;
 			}
 		};
 		peerConnection.onconnectionstatechange = () => {

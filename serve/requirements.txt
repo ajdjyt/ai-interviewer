@@ -1,2 +1,9 @@
-flash-attn
-transformers
+fastapi
+aiortc
+av
+numpy
+python-dotenv
+requests
+torch
+torchaudio
+silero-vad
